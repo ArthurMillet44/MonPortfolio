@@ -13,7 +13,7 @@
 
 import Phaser from "phaser";
 import { KEYS } from "@/utils/assetKeys";
-import { generateTextures } from "./textures";
+import { generateTextures } from "@/utils/textures";
 import "./MainMenuScene.css";
 
 /**
@@ -196,6 +196,9 @@ export class MainMenuScene extends Phaser.Scene {
     // Fondu au noir en 400ms
     this.cameras.main.fadeOut(400, 0, 0, 0);
 
-    // TODO: brancher la prochaine scène ici
+    // On attend la fin du fondu avant de changer de scène
+    this.cameras.main.once("camerafadeoutcomplete", () => {
+      this.scene.start("LevelSelectScene");
+    });
   }
 }

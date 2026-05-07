@@ -1,29 +1,29 @@
 /**
- * textures.ts
- *
- * Génère toutes les images (textures) utilisées par le menu principal.
+ * textures.ts — Générateur de textures partagées entre toutes les scènes
  *
  * Phaser charge normalement des images depuis des fichiers PNG.
  * Ici, on les dessine directement en code avec l'API Graphics de Phaser,
  * ce qui évite d'avoir des fichiers d'assets externes pour l'instant.
  *
- * Chaque texture est créée une fois, mise en cache par Phaser,
- * puis utilisée autant de fois qu'on veut via son nom (ex: KEYS.BG_SKY).
+ * Chaque texture est créée une seule fois puis mise en cache par Phaser :
+ * elle reste disponible dans toutes les scènes jusqu'à la fin de la session.
+ * Les gardes "textures.exists" empêchent de la régénérer inutilement
+ * si une scène précédente l'a déjà créée.
  */
 
 import Phaser from "phaser";
-import { KEYS } from "@/utils/assetKeys";
+import { KEYS } from "./assetKeys";
 
 /**
- * Point d'entrée : génère toutes les textures du menu en une seule fois.
- * À appeler au début de create() dans MainMenuScene.
+ * Point d'entrée : génère toutes les textures du jeu si elles ne sont pas déjà en cache.
+ * À appeler au début de create() dans chaque scène.
  *
- * @param scene - La scène Phaser courante (nécessaire pour dessiner)
+ * @param scene - La scène Phaser courante (nécessaire pour dessiner et accéder au cache)
  */
 export function generateTextures(scene: Phaser.Scene): void {
-  generateSky(scene);
-  generateClouds(scene);
-  generatePlayer(scene);
+  if (!scene.textures.exists(KEYS.BG_SKY)) generateSky(scene);
+  if (!scene.textures.exists(KEYS.BG_CLOUDS)) generateClouds(scene);
+  if (!scene.textures.exists(KEYS.PLAYER)) generatePlayer(scene);
 }
 
 /**
