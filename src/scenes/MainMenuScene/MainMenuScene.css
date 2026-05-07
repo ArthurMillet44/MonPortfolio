@@ -1,0 +1,38 @@
+/**
+ * MainMenuScene.css — Styles visuels du menu principal
+ 
+ * Toutes les valeurs visuelles (couleurs, tailles, police) sont ici.
+ * Pour changer l'apparence du menu, c'est ce fichier qu'il faut modifier.
+ *
+ * Ces variables sont lues dans MainMenuScene.ts via la fonction css().
+ * Elles sont déclarées sur :root pour être accessibles globalement.
+ */
+
+:root {
+  /* Police utilisée pour tous les textes du menu */
+  --menu-font: Silkscreen, monospace;
+
+  /* Titre principal "ARTHUR MILLET" */
+  --menu-title-color: #f5c518;
+  --menu-title-stroke: #0a0a1a;
+  --menu-title-size: 36px;
+  --menu-title-stroke-width: 5;
+
+  /* Sous-titre "PORTFOLIO" */
+  --menu-subtitle-color: #4ec9b0;
+  --menu-subtitle-stroke: #0a0a1a;
+  --menu-subtitle-size: 22px;
+  --menu-subtitle-stroke-width: 4;
+
+  /* Texte clignotant "APPUIE SUR ENTRÉE" */
+  --menu-prompt-color: #ffffff;
+  --menu-prompt-size: 16px;
+
+  /* Rappel des contrôles en bas de l'écran */
+  --menu-controls-color: #888888;
+  --menu-controls-size: 16px;
+
+  /* Numéro de version (coin bas gauche) */
+  --menu-version-color: #444466;
+  --menu-version-size: 11px;
+}
