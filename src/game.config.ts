@@ -9,6 +9,7 @@
 
 import Phaser from "phaser";
 import { MainMenuScene } from "./scenes/MainMenuScene/MainMenuScene";
+import { LevelSelectScene } from "./scenes/LevelSelectScene/LevelSelectScene";
 
 export const gameConfig: Phaser.Types.Core.GameConfig = {
   // Phaser choisit automatiquement WebGL (rapide) ou Canvas (compatible) selon le navigateur
@@ -34,5 +35,5 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
   },
 
   // Liste des scènes du jeu — la première de la liste est lancée au démarrage
-  scene: [MainMenuScene],
+  scene: [MainMenuScene, LevelSelectScene],
 };

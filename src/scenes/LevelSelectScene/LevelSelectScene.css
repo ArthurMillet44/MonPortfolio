@@ -1,0 +1,38 @@
+/**
+ * LevelSelectScene.css — Styles visuels de l'écran de sélection de niveau
+ *
+ * Même principe que MainMenuScene.css : toutes les valeurs visuelles sont ici.
+ * Pour changer l'apparence des cartes ou des textes, c'est ce fichier qu'il faut modifier.
+ *
+ * Ces variables sont lues dans LevelSelectScene.ts via les fonctions css() et cssHex().
+ */
+
+:root {
+  /* Police (même que dans le reste du jeu) */
+  --select-font: Silkscreen, monospace;
+
+  /* Titre de page "SÉLECTIONNER UN NIVEAU" */
+  --select-title-color: #f5c518;
+  --select-title-stroke: #0a0a1a;
+  --select-title-size: 20px;
+  --select-title-stroke-width: 3;
+
+  /* Titre à l'intérieur de chaque carte ("PROJETS", "EXPÉRIENCES") */
+  --select-card-title-size: 16px;
+
+  /* Carte "PROJETS" — couleur d'accent (bordure, titre) et couleur de fond */
+  --select-card-projects-accent: #4ec9b0;
+  --select-card-projects-bg: #1a3a3a;
+
+  /* Carte "EXPÉRIENCES" — couleur d'accent et fond */
+  --select-card-xp-accent: #f5c518;
+  --select-card-xp-bg: #3a2e00;
+
+  /* Texte du bouton "JOUER" */
+  --select-btn-label-color: #0a0a1a;
+  --select-btn-label-size: 14px;
+
+  /* Astuce ESC en bas de l'écran */
+  --select-hint-color: #8888aa;
+  --select-hint-size: 14px;
+}
