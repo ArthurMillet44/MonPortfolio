@@ -1,0 +1,23 @@
+/**
+ * Styles visuels de l'écran de sélection de projet
+ *
+ * Seules les valeurs propres à ce chapitre sont définies ici.
+ * Les valeurs partagées (police, contour, hint…) viennent de global.css.
+ */
+
+:root {
+  /* Titre de page */
+  --projects-title-color: #4ec9b0;
+  --projects-title-size: 20px;
+
+  /* Cartes de projet */
+  --projects-card-bg: #1a3a3a;
+  --projects-card-accent: #4ec9b0;
+  --projects-card-text-color: #e0f7f4;
+  --projects-card-text-size: 14px;
+
+  /* Astuce ESC en bas de l'écran */
+  --projects-hint-color: #8888aa;
+  --projects-hint-size: 14px;
+  --projects-title-stroke-width: 3;
+}

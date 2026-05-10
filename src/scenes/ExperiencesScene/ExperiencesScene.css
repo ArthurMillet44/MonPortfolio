@@ -1,0 +1,23 @@
+/**
+ * Styles visuels de l'écran de sélection d'expérience
+ *
+ * Seules les valeurs propres à ce chapitre sont définies ici.
+ * Les valeurs partagées (police, contour, hint…) viennent de global.css.
+ */
+
+:root {
+  /* Titre de page */
+  --experiences-title-color: #f5c518;
+  --experiences-title-size: 20px;
+
+  /* Cartes d'expérience */
+  --experiences-card-bg: #3a2e00;
+  --experiences-card-accent: #f5c518;
+  --experiences-card-text-color: #fff8dc;
+  --experiences-card-text-size: 14px;
+
+  /* Astuce ESC en bas de l'écran */
+  --experiences-hint-color: #8888aa;
+  --experiences-hint-size: 14px;
+  --experiences-title-stroke-width: 3;
+}
