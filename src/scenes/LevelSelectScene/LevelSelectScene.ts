@@ -6,15 +6,15 @@
  * Chaque choix est représenté par une carte interactive.
  *
  * Ordre d'exécution :
- *   1. create()            → fondu d'entrée, génération des textures, construction de l'écran
+ *   1. create()            → (hérité de BaseScene) fondu + textures + buildScene()
  *   2. buildScene()        → place le fond, les nuages, le titre, les cartes et l'astuce ESC
  *   3. createLevelCard()   → crée une carte cliquable pour un niveau donné
- *   4. launchLevel()       → fondu noir puis changement de scène
+ *   4. launchLevel()       → (hérité de BaseScene) fondu noir puis changement de scène
  */
 
 import Phaser from "phaser";
 import { KEYS } from "@/utils/assetKeys";
-import { generateTextures } from "@/utils/textures";
+import { BaseScene } from "@/scenes/Common/BaseScene";
 import "./LevelSelectScene.css";
 
 /**
@@ -44,49 +44,20 @@ function cssHex(variable: string): number {
   return parseInt(css(variable).replace("#", ""), 16);
 }
 
-export class LevelSelectScene extends Phaser.Scene {
+export class LevelSelectScene extends BaseScene {
   constructor() {
     // Nom de la scène — utilisé pour y naviguer depuis d'autres scènes
     super({ key: "LevelSelectScene" });
   }
 
   /**
-   * Appelé une seule fois au chargement de la scène.
-   * On applique un fondu d'entrée, on s'assure que les textures sont en cache,
-   * puis on construit l'écran.
-   */
-  create(): void {
-    // L'écran s'éclaircit progressivement depuis le noir (transition douce)
-    this.cameras.main.fadeIn(400, 0, 0, 0);
-    generateTextures(this);
-    this.buildScene();
-  }
-
-  /**
    * Place tous les éléments visuels sur l'écran :
    * fond, nuages, titre, cartes de sélection et astuce ESC.
    */
-  private buildScene(): void {
+  protected buildScene(): void {
     const { width, height } = this.scale;
 
-    // Fond — même ciel que le menu principal
-    this.add
-      .image(width / 2, height / 2, KEYS.BG_SKY)
-      .setDisplaySize(width, height);
-
-    // Nuages animés en sens opposés (effet de profondeur simple)
-    const cloud1 = this.add.image(200, 80, KEYS.BG_CLOUDS).setAlpha(0.6);
-    const cloud2 = this.add
-      .image(600, 120, KEYS.BG_CLOUDS)
-      .setAlpha(0.4)
-      .setFlipX(true);
-    this.tweens.add({
-      targets: cloud1,
-      x: width + 200,
-      duration: 20000,
-      repeat: -1,
-    });
-    this.tweens.add({ targets: cloud2, x: -200, duration: 25000, repeat: -1 });
+    this.buildBackground(width, height);
 
     // Titre de la page
     this.add
@@ -106,8 +77,7 @@ export class LevelSelectScene extends Phaser.Scene {
       "CHAPITRE 1: PROJETS",
       "--select-card-projects-accent",
       "--select-card-projects-bg",
-      // TODO: remplacer par 'ProjectsLevelScene' quand la scène sera créée
-      () => this.launchLevel("MainMenuScene"),
+      () => this.launchLevel("ProjectsScene"),
     );
 
     // Carte "Expériences" — à droite du centre
@@ -117,8 +87,7 @@ export class LevelSelectScene extends Phaser.Scene {
       "CHAPITRE 2: EXPÉRIENCES",
       "--select-card-xp-accent",
       "--select-card-xp-bg",
-      // TODO: remplacer par 'ExperiencesLevelScene' quand la scène sera créée
-      () => this.launchLevel("MainMenuScene"),
+      () => this.launchLevel("ExperiencesScene"),
     );
 
     // Astuce pour revenir au menu
@@ -212,11 +181,9 @@ export class LevelSelectScene extends Phaser.Scene {
       })
       .setOrigin(0.5);
 
-    // On ajoute tous les éléments au conteneur
     container.add([cardBg, titleText, player, btnBg, btnText]);
 
     // Zone interactive sur toute la surface de la carte
-    // (le rectangle de détection est centré sur le conteneur)
     container.setInteractive(
       new Phaser.Geom.Rectangle(-W / 2, -H / 2, W, H),
       Phaser.Geom.Rectangle.Contains,
@@ -224,43 +191,17 @@ export class LevelSelectScene extends Phaser.Scene {
 
     // Survol : la carte grandit légèrement et la bordure s'épaissit
     container.on("pointerover", () => {
-      this.tweens.add({
-        targets: container,
-        scaleX: 1.04,
-        scaleY: 1.04,
-        duration: 120,
-      });
+      this.tweens.add({ targets: container, scaleX: 1.04, scaleY: 1.04, duration: 120 });
       cardBg.setStrokeStyle(3, accentInt);
     });
 
     // Fin de survol : retour à la taille normale
     container.on("pointerout", () => {
-      this.tweens.add({
-        targets: container,
-        scaleX: 1,
-        scaleY: 1,
-        duration: 120,
-      });
+      this.tweens.add({ targets: container, scaleX: 1, scaleY: 1, duration: 120 });
       cardBg.setStrokeStyle(2, accentInt);
     });
 
     // Clic sur la carte → lance le niveau
     container.on("pointerdown", onSelect);
-  }
-
-  /**
-   * Lance une transition vers une autre scène.
-   * L'écran s'assombrit progressivement avant de changer de scène.
-   *
-   * @param sceneKey - La clé de la scène cible (ex : "MainMenuScene")
-   */
-  private launchLevel(sceneKey: string): void {
-    // Fondu au noir en 400ms
-    this.cameras.main.fadeOut(400, 0, 0, 0);
-
-    // On attend la fin du fondu avant de changer de scène
-    this.cameras.main.once("camerafadeoutcomplete", () => {
-      this.scene.start(sceneKey);
-    });
   }
 }

@@ -5,7 +5,7 @@
  * Elle affiche le titre, un personnage animé et un message pour démarrer.
  *
  * Ordre d'exécution :
- *   1. create()        → génère les textures puis construit l'écran
+ *   1. create()        → (hérité de BaseScene) fondu + textures + buildScene()
  *   2. buildScene()    → place tous les éléments visuels
  *   3. update()        → vérifie les touches à chaque frame
  *   4. onStart()       → lancé quand le joueur appuie sur Entrée ou clique
@@ -13,7 +13,7 @@
 
 import Phaser from "phaser";
 import { KEYS } from "@/utils/assetKeys";
-import { generateTextures } from "@/utils/textures";
+import { BaseScene } from "@/scenes/Common/BaseScene";
 import "./MainMenuScene.css";
 
 /**
@@ -34,7 +34,7 @@ function cssNum(variable: string): number {
   return parseFloat(css(variable));
 }
 
-export class MainMenuScene extends Phaser.Scene {
+export class MainMenuScene extends BaseScene {
   /** Touche Entrée, utilisée pour démarrer le jeu */
   private enterKey!: Phaser.Input.Keyboard.Key;
 
@@ -47,42 +47,13 @@ export class MainMenuScene extends Phaser.Scene {
   }
 
   /**
-   * Appelé une seule fois au chargement de la scène.
-   * On génère d'abord les textures (images dessinées en code),
-   * puis on construit l'écran du menu.
-   */
-  create(): void {
-    generateTextures(this);
-    this.buildScene();
-  }
-
-  /**
    * Place tous les éléments visuels du menu sur l'écran :
    * fond, nuages animés, titre, personnage, prompt et contrôles.
    */
-  private buildScene(): void {
+  protected buildScene(): void {
     const { width, height } = this.scale;
 
-    // Fond
-    // L'image de ciel couvre tout l'écran
-    this.add
-      .image(width / 2, height / 2, KEYS.BG_SKY)
-      .setDisplaySize(width, height);
-
-    // Nuages animés
-    // Deux nuages qui se déplacent lentement en sens opposés (effet parallaxe simple)
-    const cloud1 = this.add.image(200, 80, KEYS.BG_CLOUDS).setAlpha(0.6);
-    const cloud2 = this.add
-      .image(600, 120, KEYS.BG_CLOUDS)
-      .setAlpha(0.4)
-      .setFlipX(true);
-    this.tweens.add({
-      targets: cloud1,
-      x: width + 200,
-      duration: 20000,
-      repeat: -1,
-    });
-    this.tweens.add({ targets: cloud2, x: -200, duration: 25000, repeat: -1 });
+    this.buildBackground(width, height);
 
     // Titre principal
     this.add
@@ -93,7 +64,7 @@ export class MainMenuScene extends Phaser.Scene {
         stroke: css("--menu-title-stroke"),
         strokeThickness: cssNum("--menu-title-stroke-width"),
       })
-      .setOrigin(0.5); // centré horizontalement et verticalement
+      .setOrigin(0.5);
 
     // Sous-titre
     this.add
@@ -118,10 +89,10 @@ export class MainMenuScene extends Phaser.Scene {
     // Animation : le texte disparaît et réapparaît en boucle (yoyo = aller-retour)
     this.blinkTween = this.tweens.add({
       targets: pressEnter,
-      alpha: 0, // devient transparent
-      duration: 600, // en 600ms
-      yoyo: true, // puis revient visible
-      repeat: -1, // répète indéfiniment
+      alpha: 0,
+      duration: 600,
+      yoyo: true,
+      repeat: -1,
     });
 
     // Rappel des contrôles
@@ -138,20 +109,19 @@ export class MainMenuScene extends Phaser.Scene {
       )
       .setOrigin(0.5);
 
-    // Personnage animé
-    // Le personnage flotte de haut en bas pour attirer l'attention
+    // Personnage animé — flotte de haut en bas pour attirer l'attention
     const playerPreview = this.add
       .image(width / 2, height * 0.52, KEYS.PLAYER)
-      .setFrame("idle") // utilise le frame "idle" du spritesheet
-      .setScale(3); // agrandi x3 pour être visible
+      .setFrame("idle")
+      .setScale(3);
 
     this.tweens.add({
       targets: playerPreview,
-      y: height * 0.52 - 6, // monte de 6px
+      y: height * 0.52 - 6,
       duration: 800,
       yoyo: true,
       repeat: -1,
-      ease: "Sine.easeInOut", // mouvement fluide
+      ease: "Sine.easeInOut",
     });
 
     // Numéro de version (coin bas gauche)
@@ -163,11 +133,9 @@ export class MainMenuScene extends Phaser.Scene {
 
     // Gestion des touches
     if (this.input.keyboard) {
-      // Touche Entrée : stockée pour être vérifiée dans update()
       this.enterKey = this.input.keyboard.addKey(
         Phaser.Input.Keyboard.KeyCodes.ENTER,
       );
-      // Espace : écoute l'événement "keydown" directement
       this.input.keyboard
         .addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
         .on("down", () => this.onStart());
@@ -187,18 +155,10 @@ export class MainMenuScene extends Phaser.Scene {
 
   /**
    * Démarre la transition vers la scène suivante.
-   * L'écran s'assombrit progressivement avant de changer de scène.
+   * On arrête le clignotement pour éviter un flash pendant le fondu.
    */
   private onStart(): void {
-    // On arrête le clignotement pour éviter un flash pendant le fondu
     this.blinkTween?.stop();
-
-    // Fondu au noir en 400ms
-    this.cameras.main.fadeOut(400, 0, 0, 0);
-
-    // On attend la fin du fondu avant de changer de scène
-    this.cameras.main.once("camerafadeoutcomplete", () => {
-      this.scene.start("LevelSelectScene");
-    });
+    this.launchLevel("LevelSelectScene");
   }
 }
