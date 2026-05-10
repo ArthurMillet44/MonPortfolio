@@ -1,5 +1,5 @@
 /**
- * game.config.ts — Configuration principale du jeu Phaser
+ * Configuration principale du jeu Phaser
  *
  * Ce fichier définit les paramètres globaux du jeu :
  * dimensions, rendu, physique, et liste des scènes.
@@ -10,6 +10,8 @@
 import Phaser from "phaser";
 import { MainMenuScene } from "./scenes/MainMenuScene/MainMenuScene";
 import { LevelSelectScene } from "./scenes/LevelSelectScene/LevelSelectScene";
+import { ProjectsScene } from "./scenes/ProjectsScene/ProjectsScene";
+import { ExperiencesScene } from "./scenes/ExperiencesScene/ExperiencesScene";
 
 export const gameConfig: Phaser.Types.Core.GameConfig = {
   // Phaser choisit automatiquement WebGL (rapide) ou Canvas (compatible) selon le navigateur
@@ -35,5 +37,5 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
   },
 
   // Liste des scènes du jeu — la première de la liste est lancée au démarrage
-  scene: [MainMenuScene, LevelSelectScene],
+  scene: [MainMenuScene, LevelSelectScene, ProjectsScene, ExperiencesScene],
 };
