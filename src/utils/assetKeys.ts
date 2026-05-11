@@ -7,8 +7,17 @@
  */
 
 export const KEYS = {
-  /** Spritesheet du personnage joueur (4 frames : idle, walk_1, walk_2, jump) */
-  PLAYER: "player",
+  /** Spritesheet Soldier idle — 6 frames 100×100 (avec ombres) */
+  SOLDIER_IDLE: "soldier_idle",
+
+  /** Spritesheet Soldier walk — 8 frames 100×100 (avec ombres) */
+  SOLDIER_WALK: "soldier_walk",
+
+  /** Spritesheet Orc idle — 6 frames 100×100 (avec ombres) */
+  ORC_IDLE: "orc_idle",
+
+  /** Spritesheet Orc walk — 8 frames 100×100 (avec ombres) */
+  ORC_WALK: "orc_walk",
 
   /** Image de fond : ciel en dégradé de bleus */
   BG_SKY: "bg_sky",

@@ -19,6 +19,26 @@ import { KEYS } from "@/utils/assetKeys";
 import { generateTextures } from "@/utils/textures";
 
 export abstract class BaseScene extends Phaser.Scene {
+  /** Charge les spritesheets des personnages (Soldier et Orc avec ombres). */
+  preload(): void {
+    this.load.spritesheet(KEYS.SOLDIER_IDLE, "assets/sprites/Soldier-Idle.png", {
+      frameWidth: 100,
+      frameHeight: 100,
+    });
+    this.load.spritesheet(KEYS.SOLDIER_WALK, "assets/sprites/Soldier-Walk.png", {
+      frameWidth: 100,
+      frameHeight: 100,
+    });
+    this.load.spritesheet(KEYS.ORC_IDLE, "assets/sprites/Orc-Idle.png", {
+      frameWidth: 100,
+      frameHeight: 100,
+    });
+    this.load.spritesheet(KEYS.ORC_WALK, "assets/sprites/Orc-Walk.png", {
+      frameWidth: 100,
+      frameHeight: 100,
+    });
+  }
+
   /**
    * Appelé une seule fois au chargement de la scène.
    * Fondu d'entrée, vérification du cache des textures, puis construction de l'écran.
