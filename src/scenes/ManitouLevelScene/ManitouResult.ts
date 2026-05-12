@@ -15,12 +15,14 @@ import { buildButton } from "./ManitouUI";
  * @param caught   - Liste des technos distinctes collectées pendant la partie.
  * @param onReplay - Appelé par le bouton "Rejouer" (relance directement le jeu).
  * @param onMenu   - Appelé par le bouton "Menu" (retour à la sélection de chapitres).
+ * @param onDemo   - Appelé par le bouton "Voir Démo" (ouvre l'overlay vidéo).
  */
 export function buildResult(
   scene: Phaser.Scene,
   caught: TechId[],
   onReplay: () => void,
   onMenu: () => void,
+  onDemo: () => void,
 ): void {
   const { width, height } = scene.scale;
   const font = css("--font-pixel");
@@ -74,7 +76,7 @@ export function buildResult(
 
   const btnY = height * 0.875;
   buildButton(scene, width / 2 - 220, btnY, "REJOUER", onReplay, cssHex("--manitou-timer-ok"));
-  buildButton(scene, width / 2, btnY, "VOIR DÉMO", () => { /* TODO */ });
+  buildButton(scene, width / 2, btnY, "VOIR DÉMO", onDemo);
   buildButton(scene, width / 2 + 220, btnY, "MENU", onMenu, cssHex("--manitou-timer-ok"));
 }
 

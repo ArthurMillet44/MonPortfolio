@@ -12,6 +12,7 @@ import { TechId } from "./ManitouConfig";
 import { buildIntro, buildRulesOverlay } from "./ManitouIntro";
 import { ManitouGame } from "./ManitouGame";
 import { buildResult } from "./ManitouResult";
+import { buildVideoOverlay } from "./ManitouVideoPanel";
 import "./ManitouLevelScene.css";
 
 type GameState = "intro" | "game" | "result";
@@ -69,6 +70,7 @@ export class ManitouLevelScene extends BaseScene {
         this.caught,
         () => this.transition("game"),
         () => this.launchLevel("LevelSelectScene"),
+        () => buildVideoOverlay(this, this.escKey, () => this.resetEsc()),
       );
     }
   }
