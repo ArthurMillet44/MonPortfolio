@@ -14,6 +14,14 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: 'SpeedDemon';
+  src: url('/fonts/SpeedDemon.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
 *,
 *::before,
 *::after {
@@ -31,7 +39,7 @@
   --color-panel-bg: rgba(10, 10, 30, 0.92);
   --color-panel-border: #f5c518;
   --color-tag-bg: #1a1a3a;
-  --font-pixel: 'Silkscreen', monospace;
+  --font-pixel: 'SpeedDemon', monospace;
   --radius: 0px;
   --gap: 16px;
 }

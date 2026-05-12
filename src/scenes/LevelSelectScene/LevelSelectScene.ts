@@ -70,23 +70,25 @@ export class LevelSelectScene extends BaseScene {
       })
       .setOrigin(0.5);
 
-    // Carte "Projets" — à gauche du centre
+    // Carte "Projets" — à gauche du centre (Soldier)
     this.createLevelCard(
       width / 2 - 180,
       height * 0.52,
       "CHAPITRE 1: PROJETS",
       "--select-card-projects-accent",
       "--select-card-projects-bg",
+      KEYS.SOLDIER_IDLE,
       () => this.launchLevel("ProjectsScene"),
     );
 
-    // Carte "Expériences" — à droite du centre
+    // Carte "Expériences" — à droite du centre (Orc)
     this.createLevelCard(
       width / 2 + 180,
       height * 0.52,
       "CHAPITRE 2: EXPÉRIENCES",
       "--select-card-xp-accent",
       "--select-card-xp-bg",
+      KEYS.ORC_IDLE,
       () => this.launchLevel("ExperiencesScene"),
     );
 
@@ -125,6 +127,7 @@ export class LevelSelectScene extends BaseScene {
     title: string,
     accentVar: string,
     bgVar: string,
+    spriteKey: string,
     onSelect: () => void,
   ): void {
     const W = 280;
@@ -157,8 +160,7 @@ export class LevelSelectScene extends BaseScene {
 
     // Personnage animé au centre de la carte — point visuel d'accroche
     const player = this.add
-      .image(0, -5, KEYS.PLAYER)
-      .setFrame("idle")
+      .image(0, -5, spriteKey, 0)
       .setScale(4);
 
     // Animation de flottement du personnage (monte et descend en boucle)

@@ -10,7 +10,7 @@
 
 :root {
   /* Police utilisée pour tous les textes du menu */
-  --menu-font: Silkscreen, monospace;
+  --menu-font: var(--font-pixel);
 
   /* Titre principal "ARTHUR MILLET" */
   --menu-title-color: #f5c518;
