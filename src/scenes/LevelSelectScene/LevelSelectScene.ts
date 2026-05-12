@@ -46,7 +46,7 @@ function cssHex(variable: string): number {
 
 export class LevelSelectScene extends BaseScene {
   constructor() {
-    // Nom de la scène — utilisé pour y naviguer depuis d'autres scènes
+    // Nom de la scène, utilisé pour y naviguer depuis d'autres scènes
     super({ key: "LevelSelectScene" });
   }
 
@@ -70,7 +70,7 @@ export class LevelSelectScene extends BaseScene {
       })
       .setOrigin(0.5);
 
-    // Carte "Projets" — à gauche du centre (Soldier)
+    // Carte "Projets", à gauche du centre (Soldier)
     this.createLevelCard(
       width / 2 - 180,
       height * 0.52,
@@ -81,7 +81,7 @@ export class LevelSelectScene extends BaseScene {
       () => this.launchLevel("ProjectsScene"),
     );
 
-    // Carte "Expériences" — à droite du centre (Orc)
+    // Carte "Expériences", à droite du centre (Orc)
     this.createLevelCard(
       width / 2 + 180,
       height * 0.52,
@@ -133,7 +133,7 @@ export class LevelSelectScene extends BaseScene {
     const W = 280;
     const H = 230;
 
-    // Couleurs lues depuis le CSS — deux formats nécessaires :
+    // Couleurs lues depuis le CSS, deux formats nécessaires :
     // - entier (0x4ec9b0) pour les rectangles Phaser
     // - string ("#4ec9b0") pour les textes Phaser
     const accentInt = cssHex(accentVar);
@@ -158,7 +158,7 @@ export class LevelSelectScene extends BaseScene {
       })
       .setOrigin(0.5);
 
-    // Personnage animé au centre de la carte — point visuel d'accroche
+    // Personnage animé au centre de la carte, point visuel d'accroche
     const player = this.add
       .image(0, -5, spriteKey, 0)
       .setScale(4);

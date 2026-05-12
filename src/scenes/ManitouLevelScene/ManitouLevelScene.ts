@@ -1,13 +1,9 @@
 /**
- * Gère uniquement la machine d'états (intro → game → result) et les transitions.
- * Chaque état est délégué à son module dédié :
- *   - ManitouIntro   : écran d'introduction et modale des règles
- *   - ManitouGame    : logique de jeu (spawn, timer, drag & drop)
- *   - ManitouResult  : écran de résultat
+ * Niveau Manitou, délègue intro/game/result à ses modules dédiés.
+ * La machine d'états, ESC et les transitions sont gérés par BaseLevelScene.
  */
 
-import Phaser from "phaser";
-import { BaseScene } from "@/scenes/Common/BaseScene";
+import { BaseLevelScene, GameState } from "@/scenes/Common/BaseLevelScene";
 import { TechId } from "./ManitouConfig";
 import { buildIntro, buildRulesOverlay } from "./ManitouIntro";
 import { ManitouGame } from "./ManitouGame";
@@ -15,41 +11,16 @@ import { buildResult } from "./ManitouResult";
 import { buildVideoOverlay } from "./ManitouVideoPanel";
 import "./ManitouLevelScene.css";
 
-type GameState = "intro" | "game" | "result";
-
-export class ManitouLevelScene extends BaseScene {
-  private state: GameState = "intro";
+export class ManitouLevelScene extends BaseLevelScene {
+  protected readonly menuSceneKey = "LevelSelectScene";
   private caught: TechId[] = [];
-  private escKey?: Phaser.Input.Keyboard.Key;
-  private minigame?: ManitouGame;
 
   constructor() {
     super({ key: "ManitouLevelScene" });
   }
 
-  protected buildScene(): void {
-    this.escKey = this.input.keyboard?.addKey(
-      Phaser.Input.Keyboard.KeyCodes.ESC,
-    );
-    this.resetEsc();
-    this.showState();
-  }
-
-  /**
-   * (Ré)assigne ESC à son comportement par défaut : quitter vers la sélection de chapitres.
-   * Appelé après chaque transition et après fermeture de la modale des règles.
-   */
-  private resetEsc(): void {
-    this.escKey?.removeAllListeners();
-    this.escKey?.on("down", () => this.launchLevel("LevelSelectScene"));
-  }
-
-  /** Reconstruit le fond et l'état courant. Appelé à l'init et après chaque transition. */
-  private showState(): void {
-    const { width, height } = this.scale;
-    this.buildBackground(width, height);
-
-    if (this.state === "intro") {
+  protected renderState(state: GameState): void {
+    if (state === "intro") {
       buildIntro(this, () =>
         buildRulesOverlay(
           this,
@@ -58,47 +29,28 @@ export class ManitouLevelScene extends BaseScene {
           () => this.resetEsc(),
         ),
       );
-    } else if (this.state === "game") {
-      this.minigame = new ManitouGame(this, (caught) => {
+    } else if (state === "game") {
+      const game = new ManitouGame(this, (caught) => {
         this.caught = caught;
         this.transition("result");
       });
-      this.minigame.start();
+      this.minigame = game;
+      game.start();
     } else {
       buildResult(
         this,
         this.caught,
         () => this.transition("game"),
         () => this.launchLevel("LevelSelectScene"),
-        () => buildVideoOverlay(this, this.escKey, () => this.resetEsc()),
+        () => buildVideoOverlay(() => this.resetEsc()),
       );
     }
   }
 
-  /**
-   * Effectue une transition vers un nouvel état.
-   *
-   * Séquence : fondu noir → nettoyage complet (tweens, enfants, input drag)
-   * → reconstruction du fond et du nouvel état → fondu entrant.
-   * Le fond est re-créé car tweens.killAll() supprime aussi les tweens des nuages.
-   */
-  private transition(to: GameState): void {
-    this.minigame?.stop();
-    this.minigame = undefined;
-
-    this.cameras.main.fadeOut(300, 0, 0, 0);
-    this.cameras.main.once("camerafadeoutcomplete", () => {
-      this.input.off("drag");
-      this.input.off("dragstart");
-      this.input.off("dragend");
-      this.tweens.killAll();
-      this.children.removeAll(true);
-
-      this.state = to;
-      this.resetEsc();
-      this.showState();
-
-      this.cameras.main.fadeIn(300, 0, 0, 0);
-    });
+  /** Nettoie les listeners drag & drop propres au mini-jeu Manitou. */
+  protected onTransitionCleanup(): void {
+    this.input.off("drag");
+    this.input.off("dragstart");
+    this.input.off("dragend");
   }
 }

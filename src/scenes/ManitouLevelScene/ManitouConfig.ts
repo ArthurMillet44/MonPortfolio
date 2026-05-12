@@ -3,7 +3,7 @@
  * stack technique, durée de la partie et dimensions de la zone de dépôt.
  */
 
-/** Stack technique de la mission — ordre d'affichage dans les chips résultat. */
+/** Stack technique de la mission, ordre d'affichage dans les chips résultat. */
 export const TECH = [
   { id: "sql", label: "SQL", color: 0x9b59b6 },
   { id: "talend", label: "TALEND", color: 0x3498db },
@@ -20,7 +20,7 @@ export type TechId = (typeof TECH)[number]["id"];
 export const TIMER_SECONDS = 10;
 
 /**
- * Zone de dépôt — centre et dimensions en pixels (canvas 800×600).
+ * Zone de dépôt, centre et dimensions en pixels (canvas 800×600).
  * Couvre x : 527–703, y : 82–537.
  */
 export const ZONE = { x: 615, y: 310, w: 176, h: 456 };

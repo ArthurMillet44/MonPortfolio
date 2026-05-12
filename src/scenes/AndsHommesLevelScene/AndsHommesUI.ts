@@ -1,5 +1,5 @@
 /**
- * Bouton du niveau Manitou, wrapper de LevelUI avec la couleur accent Manitou par défaut.
+ * Bouton du niveau And's Hommes, wrapper de LevelUI avec la couleur accent AH par défaut.
  */
 
 import Phaser from "phaser";
@@ -14,5 +14,5 @@ export function buildButton(
   callback: () => void,
   color?: number,
 ): void {
-  _buildButton(scene, x, y, label, callback, color ?? cssHex("--manitou-score-color"));
+  _buildButton(scene, x, y, label, callback, color ?? cssHex("--ah-score-color"));
 }
