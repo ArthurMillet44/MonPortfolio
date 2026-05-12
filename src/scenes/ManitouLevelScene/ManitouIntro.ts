@@ -24,7 +24,7 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
       width / 2,
       height * 0.07,
       "EXPÉRIENCE PROFESSIONNELLE  ·  Stage  ·  BUT Informatique",
-      { fontSize: "11px", fontFamily: font, color: "#ffffff" },
+      { fontSize: "14px", fontFamily: font, color: "#ffffff" },
     )
     .setOrigin(0.5);
 
@@ -33,7 +33,7 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
     .text(width / 2, height * 0.17, "MANITOU", {
       fontSize: "44px",
       fontFamily: font,
-      color: css("--manitou-accent"),
+      color: css("--manitou-score-color"),
       stroke: "#000000",
       strokeThickness: 4,
     })
@@ -45,36 +45,40 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
     .lineStyle(1, cssHex("--manitou-divider"))
     .lineBetween(width * 0.15, height * 0.32, width * 0.85, height * 0.32);
   scene.add
-    .text(width / 2, height * 0.36, "MISSION", {
-      fontSize: "14px",
+    .text(width * 0.12, height * 0.36, "MISSION", {
+      fontSize: "18px",
       fontFamily: font,
-      color: css("--manitou-accent"),
+      color: css("--manitou-score-color"),
     })
-    .setOrigin(0.5);
+    .setOrigin(0, 0.5);
 
   // Description de la mission
   scene.add
     .text(
-      width / 2,
+      width * 0.12,
       height * 0.41,
-      "L'équipe R&D IS est responsable de la gestion d'un grand nombre de licences logicielles. J'ai développé une application permettant de comparer le nombre de licences achetées avec celles effectivement utilisées, afin d'obtenir une vue quasi instantanée des utilisateurs rendant l'attribution des licences plus efficace.",
+      [
+        "L'équipe R&D IS est responsable de la gestion d'un grand nombre de licences logicielles.",
+        "",
+        "J'ai développé une application permettant de comparer le nombre de licences achetées avec celles effectivement utilisées, afin d'obtenir une vue quasi instantanée des utilisateurs rendant l'attribution des licences plus efficace.",
+      ],
       {
         fontSize: "14px",
         fontFamily: "'SpeedDemon', monospace",
         color: css("--manitou-text"),
-        wordWrap: { width: 660 },
-        align: "center",
-        lineSpacing: 10,
+        wordWrap: { width: width * 0.71 },
+        align: "left",
+        lineSpacing: 16,
       },
     )
-    .setOrigin(0.5, 0);
+    .setOrigin(0, 0);
 
   buildButton(scene, width / 2, height * 0.855, "► COMMENCER ◄", onStart);
 
   // Astuce ESC en bas
   scene.add
     .text(width / 2, height * 0.955, "ESC — RETOUR AU MENU", {
-      fontSize: "9px",
+      fontSize: "13px",
       fontFamily: font,
       color: "#ffffff",
     })
@@ -127,7 +131,7 @@ export function buildRulesOverlay(
   overlay.push(
     scene.add
       .rectangle(panelCx, panelCy, panelW, panelH, cssHex("--manitou-panel-bg"))
-      .setStrokeStyle(2, cssHex("--manitou-accent")),
+      .setStrokeStyle(2, cssHex("--manitou-score-color")),
   );
 
   overlay.push(
@@ -135,7 +139,7 @@ export function buildRulesOverlay(
       .text(panelCx, panelCy - panelH / 2 + 42, "RÈGLES DU JEU", {
         fontSize: "20px",
         fontFamily: font,
-        color: css("--manitou-accent"),
+        color: css("--manitou-score-color"),
       })
       .setOrigin(0.5),
   );
@@ -160,6 +164,7 @@ export function buildRulesOverlay(
           color: css("--manitou-text"),
           align: "center",
           wordWrap: { width: panelW - 80 },
+          lineSpacing: 16,
         },
       )
       .setOrigin(0.5, 0),
@@ -167,13 +172,13 @@ export function buildRulesOverlay(
 
   const btnCont = scene.add.container(panelCx, panelCy + panelH / 2 - 60);
   const btnBg = scene.add
-    .rectangle(0, 0, 170, 40, cssHex("--manitou-accent"))
-    .setStrokeStyle(2, cssHex("--manitou-accent"));
+    .rectangle(0, 0, 170, 40, cssHex("--manitou-score-color"))
+    .setStrokeStyle(2, cssHex("--manitou-score-color"));
   const btnTxt = scene.add
     .text(0, 0, "JOUER ►", {
       fontSize: "14px",
       fontFamily: font,
-      color: "#ffffff",
+      color: "#000000",
     })
     .setOrigin(0.5);
   btnCont.add([btnBg, btnTxt]);
@@ -191,7 +196,7 @@ export function buildRulesOverlay(
     });
   });
   btnCont.on("pointerout", () => {
-    btnBg.setStrokeStyle(2, cssHex("--manitou-accent"));
+    btnBg.setStrokeStyle(2, cssHex("--manitou-score-color"));
     scene.tweens.add({ targets: btnCont, scaleX: 1, scaleY: 1, duration: 80 });
   });
   btnCont.on("pointerdown", () => onPlay());

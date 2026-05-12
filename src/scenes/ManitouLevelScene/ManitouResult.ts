@@ -30,7 +30,7 @@ export function buildResult(
     .text(width / 2, height * 0.1, "RÉSULTAT", {
       fontSize: "34px",
       fontFamily: font,
-      color: css("--manitou-accent"),
+      color: css("--manitou-score-color"),
       stroke: "#000000",
       strokeThickness: 3,
     })
@@ -45,7 +45,7 @@ export function buildResult(
       {
         fontSize: "18px",
         fontFamily: font,
-        color: css("--manitou-score-color"),
+        color: css("--manitou-timer-ok"),
       },
     )
     .setOrigin(0.5);
@@ -53,7 +53,7 @@ export function buildResult(
   // Message de mission selon le score (0 à 6) — voir la fonction rating() ci-dessous
   scene.add
     .text(width / 2, height * 0.355, rating(caught.length), {
-      fontSize: "12px",
+      fontSize: "16px",
       fontFamily: font,
       color: "#ffffff",
       wordWrap: { width: 620 },
@@ -64,7 +64,7 @@ export function buildResult(
   // Les technos collectées sont mises en valeur, les autres sont grisées
   scene.add
     .text(width / 2, height * 0.475, "TECHNOLOGIES DE LA MISSION :", {
-      fontSize: "11px",
+      fontSize: "16px",
       fontFamily: font,
       color: "#ffffff",
     })
@@ -72,38 +72,10 @@ export function buildResult(
 
   drawTechRow(scene, width / 2, height * 0.557, caught);
 
-  // Carte récapitulative de l'expérience
-  const cardY = height * 0.69;
-
-  // Fond de carte et texte
-  scene.add
-    .rectangle(width / 2, cardY, 430, 58, cssHex("--manitou-panel-bg"))
-    .setStrokeStyle(1, cssHex("--manitou-divider"));
-
-  // Titre et description de l'expérience professionnelle
-  scene.add
-    .text(width / 2, cardY - 13, "MANITOU — Stage · BUT Informatique", {
-      fontSize: "12px",
-      fontFamily: font,
-      color: css("--manitou-accent"),
-    })
-    .setOrigin(0.5);
-
-  // Description de l'expérience professionnelle
-  scene.add
-    .text(width / 2, cardY + 11, "Gestion de licences logicielles · R&D IS", {
-      fontSize: "11px",
-      fontFamily: font,
-      color: "#ffffff",
-    })
-    .setOrigin(0.5);
-
   const btnY = height * 0.875;
-  buildButton(scene, width / 2 - 220, btnY, "VOIR DÉMO", () => {
-    /* TODO */
-  });
-  buildButton(scene, width / 2, btnY, "REJOUER", onReplay);
-  buildButton(scene, width / 2 + 220, btnY, "MENU", onMenu);
+  buildButton(scene, width / 2 - 220, btnY, "REJOUER", onReplay, cssHex("--manitou-timer-ok"));
+  buildButton(scene, width / 2, btnY, "VOIR DÉMO", () => { /* TODO */ });
+  buildButton(scene, width / 2 + 220, btnY, "MENU", onMenu, cssHex("--manitou-timer-ok"));
 }
 
 /**
@@ -143,8 +115,8 @@ function drawTechRow(
   caught: TechId[],
 ): void {
   const font = css("--font-pixel");
-  const chipW = 82;
-  const chipH = 24;
+  const chipW = 100;
+  const chipH = 36;
   const gap = 6;
   // 6 chips × (82 + 6) − 6 = 522px, centrés dans 800px → départ à 139px
   let x = cx - (TECH.length * (chipW + gap) - gap) / 2 + chipW / 2;
@@ -154,7 +126,7 @@ function drawTechRow(
     scene.add.rectangle(x, cy, chipW, chipH, tech.color, isCaught ? 0.9 : 0.25);
     scene.add
       .text(x, cy, tech.label, {
-        fontSize: "9px",
+        fontSize: "12px",
         fontFamily: font,
         color: "#ffffff",
       })

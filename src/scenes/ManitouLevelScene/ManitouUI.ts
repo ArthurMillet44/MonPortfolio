@@ -14,6 +14,7 @@ import { css, cssHex } from "@/utils/cssVars";
  * @param y        - Centre vertical.
  * @param label    - Texte affiché sur le bouton.
  * @param callback - Fonction appelée au clic.
+ * @param color    - Couleur de fond en hex (défaut : --manitou-score-color).
  */
 export function buildButton(
   scene: Phaser.Scene,
@@ -21,16 +22,17 @@ export function buildButton(
   y: number,
   label: string,
   callback: () => void,
+  color?: number,
 ): void {
   const W = 155;
   const H = 38;
   const font = css("--font-pixel");
-  const accent = cssHex("--manitou-accent");
+  const accent = color ?? cssHex("--manitou-score-color");
 
   const container = scene.add.container(x, y);
   const bg = scene.add.rectangle(0, 0, W, H, accent).setStrokeStyle(2, accent);
   const text = scene.add
-    .text(0, 0, label, { fontSize: "12px", fontFamily: font, color: "#ffffff" })
+    .text(0, 0, label, { fontSize: "12px", fontFamily: font, color: "#000000" })
     .setOrigin(0.5);
 
   container.add([bg, text]);
@@ -40,7 +42,6 @@ export function buildButton(
   );
   // Effet de survol : le bouton grandit légèrement et la bordure devient blanche
   container.on("pointerover", () => {
-    bg.setStrokeStyle(2, 0xffffff);
     scene.tweens.add({
       targets: container,
       scaleX: 1.06,
