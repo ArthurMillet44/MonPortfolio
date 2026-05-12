@@ -52,7 +52,7 @@ export function buildResult(
     )
     .setOrigin(0.5);
 
-  // Message de mission selon le score (0 à 6) — voir la fonction rating() ci-dessous
+  // Message de mission selon le score (0 à 6), voir la fonction rating() ci-dessous
   scene.add
     .text(width / 2, height * 0.355, rating(caught.length), {
       fontSize: "16px",

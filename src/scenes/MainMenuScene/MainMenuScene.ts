@@ -109,7 +109,7 @@ export class MainMenuScene extends BaseScene {
       )
       .setOrigin(0.5);
 
-    // Personnage animé — flotte de haut en bas pour attirer l'attention
+    // Personnage animé, flotte de haut en bas pour attirer l'attention
     const playerPreview = this.add
       .image(width / 2, height * 0.52, KEYS.SOLDIER_IDLE, 0)
       .setScale(3);
