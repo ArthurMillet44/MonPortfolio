@@ -9,11 +9,13 @@ export interface ProjectRef {
   id: string;
   /** Nom affiché sur la carte */
   title: string;
+  /** Clé de la scène à lancer au clic (optionnel) */
+  sceneKey?: string;
 }
 
 export const projects: ProjectRef[] = [
   { id: "pachinko-game", title: "Pachinko Game" },
-  { id: "ands-hommes", title: "And's Hommes" },
+  { id: "ands-hommes", title: "And's Hommes", sceneKey: "AndsHommesLevelScene" },
   { id: "projet-particules", title: "Projet Particules" },
   { id: "pikomino", title: "Pikomino" },
   { id: "good-stuff", title: "Good Stuff" },

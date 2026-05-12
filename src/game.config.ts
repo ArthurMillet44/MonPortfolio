@@ -13,6 +13,7 @@ import { LevelSelectScene } from "./scenes/LevelSelectScene/LevelSelectScene";
 import { ProjectsScene } from "./scenes/ProjectsScene/ProjectsScene";
 import { ExperiencesScene } from "./scenes/ExperiencesScene/ExperiencesScene";
 import { ManitouLevelScene } from "./scenes/ManitouLevelScene/ManitouLevelScene";
+import { AndsHommesLevelScene } from "./scenes/AndsHommesLevelScene/AndsHommesLevelScene";
 
 export const gameConfig: Phaser.Types.Core.GameConfig = {
   // Phaser choisit automatiquement WebGL (rapide) ou Canvas (compatible) selon le navigateur
@@ -38,5 +39,5 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
   },
 
   // Liste des scènes du jeu — la première de la liste est lancée au démarrage
-  scene: [MainMenuScene, LevelSelectScene, ProjectsScene, ExperiencesScene, ManitouLevelScene],
+  scene: [MainMenuScene, LevelSelectScene, ProjectsScene, ExperiencesScene, ManitouLevelScene, AndsHommesLevelScene],
 };
