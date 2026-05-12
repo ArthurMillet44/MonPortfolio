@@ -160,6 +160,11 @@ export abstract class BaseChapterScene extends BaseScene {
 
     container.add([cardBg, numText, titleText]);
 
+    if (!sceneKey) {
+      container.setAlpha(0.35);
+      return;
+    }
+
     // Zone interactive couvrant toute la surface de la carte
     container.setInteractive(
       new Phaser.Geom.Rectangle(-W / 2, -H / 2, W, H),
