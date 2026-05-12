@@ -31,7 +31,7 @@ export const PAIRS = [
     termB: "Architecture\ndu projet",
     color: 0xe74c3c,
   },
-  { id: "methodo", termA: "Méthodologie", termB: "Agile", color: 0x27ae60 },
+  { id: "methodo", termA: "Agile", termB: "Méthodologie", color: 0x27ae60 },
 ] as const;
 
 export type PairId = (typeof PAIRS)[number]["id"];
