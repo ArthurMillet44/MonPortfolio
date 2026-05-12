@@ -37,7 +37,7 @@ export const PAIRS = [
 export type PairId = (typeof PAIRS)[number]["id"];
 
 /** Durée d'une partie en secondes. */
-export const TIMER_SECONDS = 90;
+export const TIMER_SECONDS = 60;
 
 /** Dimensions des cartes et espacement de la grille (canvas 800×600). */
 export const CARD_W = 104;

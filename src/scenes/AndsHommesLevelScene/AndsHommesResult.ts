@@ -74,10 +74,38 @@ export function buildResult(
 
   // 4 boutons : REJOUER | VOIR DÉMO | VOIR GITHUB | MENU
   const btnY = height * 0.875;
-  buildButton(scene, width / 2 - 270, btnY, "REJOUER",     onReplay, cssHex("--ah-timer-ok"));
-  buildButton(scene, width / 2 - 90,  btnY, "VOIR DÉMO",   onDemo,   cssHex("--ah-accent"));
-  buildButton(scene, width / 2 + 90,  btnY, "VOIR GITHUB", onGithub, cssHex("--ah-accent"));
-  buildButton(scene, width / 2 + 270, btnY, "MENU",        onMenu,   cssHex("--ah-timer-ok"));
+  buildButton(
+    scene,
+    width / 2 - 270,
+    btnY,
+    "REJOUER",
+    onReplay,
+    cssHex("--ah-timer-ok"),
+  );
+  buildButton(
+    scene,
+    width / 2 - 90,
+    btnY,
+    "VOIR DÉMO",
+    onDemo,
+    cssHex("--ah-accent"),
+  );
+  buildButton(
+    scene,
+    width / 2 + 90,
+    btnY,
+    "VOIR GITHUB",
+    onGithub,
+    cssHex("--ah-accent"),
+  );
+  buildButton(
+    scene,
+    width / 2 + 270,
+    btnY,
+    "MENU",
+    onMenu,
+    cssHex("--ah-timer-ok"),
+  );
 
   scene.add
     .text(width / 2, height * 0.955, "ESC — RETOUR AU MENU", {
@@ -89,11 +117,12 @@ export function buildResult(
 }
 
 function rating(n: number): string {
-  if (n === 7) return "CATALOGUE MAÎTRISÉ — Tu connais And's Hommes par cœur !";
-  if (n >= 5) return "BON CLIENT — Tu te souviens de presque toute la stack.";
-  if (n >= 3) return "CLIENT RÉGULIER — Le projet te rappelle quelque chose...";
-  if (n >= 1) return "PREMIÈRE VISITE — La boutique ne t'a pas encore tout révélé.";
-  return "VITRINE FERMÉE — Aucune paire retrouvée. Réessaie !";
+  if (n === 7) return "CATALOGUE MAÎTRISÉ: Tu connais And's Hommes par cœur !";
+  if (n >= 5) return "BON CLIENT: Tu te souviens de presque toute la stack.";
+  if (n >= 3) return "CLIENT RÉGULIER: Le projet te rappelle quelque chose...";
+  if (n >= 1)
+    return "PREMIÈRE VISITE: La boutique ne t'a pas encore tout révélé.";
+  return "VITRINE FERMÉE: Aucune paire retrouvée. Réessaie !";
 }
 
 /**
@@ -114,13 +143,23 @@ function drawPairsChips(
   const row1 = PAIRS.slice(0, 4);
   const row2 = PAIRS.slice(4);
 
-  const drawRow = (pairs: typeof PAIRS, rowCy: number) => {
+  const drawRow = (
+    pairs: ReadonlyArray<(typeof PAIRS)[number]>,
+    rowCy: number,
+  ) => {
     const total = pairs.length * (chipW + gap) - gap;
     let x = cx - total / 2 + chipW / 2;
 
     for (const pair of pairs) {
       const found = foundIds.includes(pair.id);
-      scene.add.rectangle(x, rowCy, chipW, chipH, pair.color, found ? 0.9 : 0.22);
+      scene.add.rectangle(
+        x,
+        rowCy,
+        chipW,
+        chipH,
+        pair.color,
+        found ? 0.9 : 0.22,
+      );
       scene.add
         .text(x, rowCy, pair.termA, {
           fontSize: "11px",
