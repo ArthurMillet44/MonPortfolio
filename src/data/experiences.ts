@@ -9,10 +9,12 @@ export interface ExperienceRef {
   id: string;
   /** Nom affiché sur la carte */
   title: string;
+  /** Clé de la scène Phaser associée (optionnel) */
+  sceneKey?: string;
 }
 
 export const experiences: ExperienceRef[] = [
   { id: "ministere-justice", title: "Ministère de la justice" },
   { id: "microej", title: "MicroEJ" },
-  { id: "manitou", title: "Manitou" },
+  { id: "manitou", title: "Manitou", sceneKey: "ManitouLevelScene" },
 ];

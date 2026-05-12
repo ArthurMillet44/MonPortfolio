@@ -29,6 +29,8 @@ import { BaseScene } from "./BaseScene";
 export interface ChapterItem {
   id: string;
   title: string;
+  /** Clé de la scène à lancer au clic (optionnel) */
+  sceneKey?: string;
 }
 
 export abstract class BaseChapterScene extends BaseScene {
@@ -85,7 +87,7 @@ export abstract class BaseChapterScene extends BaseScene {
     const positions = this.getCardPositions(width, height);
     this.items.forEach((item, index) => {
       const { x, y } = positions[index];
-      this.buildCard(x, y, index + 1, item.title, item.id);
+      this.buildCard(x, y, index + 1, item.title, item.id, item.sceneKey);
     });
 
     // Astuce ESC en bas
@@ -121,7 +123,8 @@ export abstract class BaseChapterScene extends BaseScene {
     y: number,
     num: number,
     title: string,
-    id: string,
+    _id: string,
+    sceneKey?: string,
   ): void {
     const p = this.cssPrefix;
     const W = this.cardWidth;
@@ -185,9 +188,11 @@ export abstract class BaseChapterScene extends BaseScene {
       cardBg.setStrokeStyle(2, accentInt);
     });
 
-    // Clic : TODO brancher sur la scène de gameplay quand elle sera créée
+    // Clic : lance la scène si disponible, sinon indique que le niveau arrive bientôt
     container.on("pointerdown", () => {
-      void id;
+      if (sceneKey) {
+        this.launchLevel(sceneKey);
+      }
     });
   }
 }
