@@ -60,7 +60,7 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
       "L'équipe R&D IS est responsable de la gestion d'un grand nombre de licences logicielles. J'ai développé une application permettant de comparer le nombre de licences achetées avec celles effectivement utilisées, afin d'obtenir une vue quasi instantanée des utilisateurs rendant l'attribution des licences plus efficace.",
       {
         fontSize: "14px",
-        fontFamily: font,
+        fontFamily: "'SpeedDemon', monospace",
         color: css("--manitou-text"),
         wordWrap: { width: 660 },
         align: "center",

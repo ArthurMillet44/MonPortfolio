@@ -9,7 +9,7 @@
 
 :root {
   /* Police (même que dans le reste du jeu) */
-  --select-font: Silkscreen, monospace;
+  --select-font: var(--font-pixel);
 
   /* Titre de page "SÉLECTIONNER UN NIVEAU" */
   --select-title-color: #f5c518;
