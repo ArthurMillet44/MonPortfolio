@@ -117,7 +117,7 @@ export function buildResult(
 }
 
 function rating(n: number): string {
-  if (n === 7) return "CATALOGUE MAÎTRISÉ: Tu connais And's Hommes par cœur !";
+  if (n === 7) return "CATALOGUE MAÎTRISÉ: Tu connais And's Hommes par coeur !";
   if (n >= 5) return "BON CLIENT: Tu te souviens de presque toute la stack.";
   if (n >= 3) return "CLIENT RÉGULIER: Le projet te rappelle quelque chose...";
   if (n >= 1)
