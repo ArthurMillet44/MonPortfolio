@@ -17,7 +17,7 @@ export const projects: ProjectRef[] = [
   { id: "pachinko-game", title: "Pachinko Game" },
   { id: "ands-hommes", title: "And's Hommes", sceneKey: "AndsHommesLevelScene" },
   { id: "projet-particules", title: "Projet Particules" },
-  { id: "pikomino", title: "Pikomino" },
+  { id: "pikomino", title: "Pikomino", sceneKey: "PikominoLevelScene" },
   { id: "good-stuff", title: "Good Stuff" },
   { id: "paldex", title: "Paldex" },
   { id: "frdigechef", title: "FrdigeChef" },

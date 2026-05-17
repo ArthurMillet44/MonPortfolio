@@ -1,0 +1,18 @@
+/**
+ * Variables CSS pour le niveau Pikomino
+ */
+
+:root {
+  --piko-accent: #2ecc71;
+  --piko-text: #ecf0f1;
+  --piko-text-dim: #7f8c8d;
+  --piko-panel-bg: #1a1a2e;
+  --piko-divider: #2c3e50;
+  --piko-score-color: #2ecc71;
+  --piko-snake-head: #55d98d;
+  --piko-snake-body: #1a6b3c;
+  --piko-grid-border: #2c3e50;
+  --piko-timer-ok: #2ecc71;
+  --piko-timer-warning: #f39c12;
+  --piko-timer-danger: #e74c3c;
+}
