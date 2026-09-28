@@ -33,7 +33,7 @@ export function buildResult(
   // Titre
   scene.add
     .text(width / 2, height * 0.08, "RÉSULTAT", {
-      fontSize: "34px",
+      fontSize: css("--ah-result-title-size"),
       fontFamily: font,
       color: css("--ah-score-color"),
       stroke: "#000000",
@@ -44,7 +44,7 @@ export function buildResult(
   // Score
   scene.add
     .text(width / 2, height * 0.225, `${n} / ${PAIRS.length} PAIRES TROUVÉES`, {
-      fontSize: "18px",
+      fontSize: css("--ah-result-score-size"),
       fontFamily: font,
       color: css("--ah-timer-ok"),
     })
@@ -53,7 +53,7 @@ export function buildResult(
   // Message thématique
   scene.add
     .text(width / 2, height * 0.335, rating(n), {
-      fontSize: "15px",
+      fontSize: css("--ah-result-message-size"),
       fontFamily: font,
       color: "#ffffff",
       wordWrap: { width: 620 },
@@ -64,7 +64,7 @@ export function buildResult(
   // Titre du récap stack
   scene.add
     .text(width / 2, height * 0.435, "STACK TECHNIQUE :", {
-      fontSize: "14px",
+      fontSize: css("--ah-result-subtitle-size"),
       fontFamily: font,
       color: "#ffffff",
     })
@@ -109,7 +109,7 @@ export function buildResult(
 
   scene.add
     .text(width / 2, height * 0.955, "ESC — RETOUR AU MENU", {
-      fontSize: "13px",
+      fontSize: css("--ah-hint-size"),
       fontFamily: font,
       color: "#ffffff",
     })
@@ -162,7 +162,7 @@ function drawPairsChips(
       );
       scene.add
         .text(x, rowCy, pair.termA, {
-          fontSize: "11px",
+          fontSize: css("--ah-result-chip-size"),
           fontFamily: font,
           color: "#ffffff",
           align: "center",

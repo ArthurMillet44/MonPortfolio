@@ -42,6 +42,9 @@
   --font-pixel: 'SpeedDemon', monospace;
   --radius: 0px;
   --gap: 16px;
+
+  /* Bouton de niveau partagé (voir scenes/Common/LevelUI.ts) */
+  --level-btn-label-size: 12px;
 }
 
 html,

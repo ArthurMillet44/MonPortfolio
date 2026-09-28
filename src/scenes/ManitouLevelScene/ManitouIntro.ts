@@ -24,14 +24,14 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
       width / 2,
       height * 0.07,
       "EXPÉRIENCE PROFESSIONNELLE  ·  Stage  ·  BUT Informatique",
-      { fontSize: "14px", fontFamily: font, color: "#ffffff" },
+      { fontSize: css("--manitou-context-size"), fontFamily: font, color: "#ffffff" },
     )
     .setOrigin(0.5);
 
   // Titre principal
   scene.add
     .text(width / 2, height * 0.17, "MANITOU", {
-      fontSize: "44px",
+      fontSize: css("--manitou-title-size"),
       fontFamily: font,
       color: css("--manitou-score-color"),
       stroke: "#000000",
@@ -46,7 +46,7 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
     .lineBetween(width * 0.15, height * 0.32, width * 0.85, height * 0.32);
   scene.add
     .text(width * 0.12, height * 0.36, "MISSION", {
-      fontSize: "18px",
+      fontSize: css("--manitou-mission-label-size"),
       fontFamily: font,
       color: css("--manitou-score-color"),
     })
@@ -63,8 +63,8 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
         "J'ai développé une application permettant de comparer le nombre de licences achetées avec celles effectivement utilisées, afin d'obtenir une vue quasi instantanée des utilisateurs rendant l'attribution des licences plus efficace.",
       ],
       {
-        fontSize: "14px",
-        fontFamily: "'SpeedDemon', monospace",
+        fontSize: css("--manitou-description-size"),
+        fontFamily: css("--manitou-description-font"),
         color: css("--manitou-text"),
         wordWrap: { width: width * 0.71 },
         align: "left",
@@ -78,7 +78,7 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
   // Astuce ESC en bas
   scene.add
     .text(width / 2, height * 0.955, "ESC — RETOUR AU MENU", {
-      fontSize: "13px",
+      fontSize: css("--manitou-hint-size"),
       fontFamily: font,
       color: "#ffffff",
     })
@@ -137,7 +137,7 @@ export function buildRulesOverlay(
   overlay.push(
     scene.add
       .text(panelCx, panelCy - panelH / 2 + 42, "RÈGLES DU JEU", {
-        fontSize: "20px",
+        fontSize: css("--manitou-modal-title-size"),
         fontFamily: font,
         color: css("--manitou-score-color"),
       })
@@ -159,7 +159,7 @@ export function buildRulesOverlay(
           `Tu as ${TIMER_SECONDS} secondes. Bonne chance !`,
         ],
         {
-          fontSize: "13px",
+          fontSize: css("--manitou-modal-text-size"),
           fontFamily: font,
           color: css("--manitou-text"),
           align: "center",
@@ -176,7 +176,7 @@ export function buildRulesOverlay(
     .setStrokeStyle(2, cssHex("--manitou-score-color"));
   const btnTxt = scene.add
     .text(0, 0, "JOUER ►", {
-      fontSize: "14px",
+      fontSize: css("--manitou-modal-button-size"),
       fontFamily: font,
       color: "#000000",
     })
@@ -205,7 +205,7 @@ export function buildRulesOverlay(
   overlay.push(
     scene.add
       .text(panelCx, panelCy + panelH / 2 + 18, "ESC pour annuler", {
-        fontSize: "9px",
+        fontSize: css("--manitou-modal-cancel-size"),
         fontFamily: font,
         color: "#ffffff",
       })

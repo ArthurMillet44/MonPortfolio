@@ -13,4 +13,33 @@
   --manitou-timer-ok: #2ecc71;
   --manitou-timer-warning: #f39c12;
   --manitou-timer-danger: #e74c3c;
+
+  /* Tailles de police - écran d'introduction */
+  --manitou-context-size: 14px;
+  --manitou-title-size: 44px;
+  --manitou-mission-label-size: 18px;
+  --manitou-description-size: 14px;
+  --manitou-hint-size: 13px;
+
+  /* Police du paragraphe de description (volontairement distincte de --font-pixel) */
+  --manitou-description-font: 'SpeedDemon', monospace;
+
+  /* Tailles de police - modale des règles */
+  --manitou-modal-title-size: 20px;
+  --manitou-modal-text-size: 13px;
+  --manitou-modal-button-size: 14px;
+  --manitou-modal-cancel-size: 9px;
+
+  /* Tailles de police - écran de jeu (HUD et blocs) */
+  --manitou-hud-size: 15px;
+  --manitou-zone-label-size: 11px;
+  --manitou-zone-hint-size: 9px;
+  --manitou-block-label-size: 12px;
+
+  /* Tailles de police - écran de résultat */
+  --manitou-result-title-size: 34px;
+  --manitou-result-score-size: 18px;
+  --manitou-result-message-size: 16px;
+  --manitou-result-subtitle-size: 16px;
+  --manitou-result-chip-size: 12px;
 }

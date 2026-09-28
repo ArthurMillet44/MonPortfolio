@@ -30,7 +30,11 @@ export function buildButton(
   const container = scene.add.container(x, y);
   const bg = scene.add.rectangle(0, 0, W, H, color).setStrokeStyle(2, color);
   const text = scene.add
-    .text(0, 0, label, { fontSize: "12px", fontFamily: font, color: "#000000" })
+    .text(0, 0, label, {
+      fontSize: css("--level-btn-label-size"),
+      fontFamily: font,
+      color: "#000000",
+    })
     .setOrigin(0.5);
 
   container.add([bg, text]);
