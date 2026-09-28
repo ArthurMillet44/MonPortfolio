@@ -82,14 +82,14 @@ export class AndsHommesGame {
     const { width } = this.scene.scale;
 
     this.pairsText = this.scene.add.text(14, 14, "PAIRES : 0 / 7", {
-      fontSize: "15px",
+      fontSize: css("--ah-hud-size"),
       fontFamily: font,
       color: css("--ah-score-color"),
     });
 
     this.timerText = this.scene.add
       .text(width - 14, 14, `TEMPS : ${TIMER_SECONDS}`, {
-        fontSize: "15px",
+        fontSize: css("--ah-hud-size"),
         fontFamily: font,
         color: css("--ah-timer-ok"),
       })
@@ -97,7 +97,7 @@ export class AndsHommesGame {
 
     this.scene.add
       .text(width / 2, 14, "AND'S HOMMES", {
-        fontSize: "15px",
+        fontSize: css("--ah-hud-size"),
         fontFamily: font,
         color: css("--ah-accent"),
       })
@@ -160,7 +160,7 @@ export class AndsHommesGame {
       .setStrokeStyle(2, cssHex("--ah-card-border"));
     const backLabel = this.scene.add
       .text(0, 0, "AH", {
-        fontSize: "18px",
+        fontSize: css("--ah-card-back-size"),
         fontFamily: font,
         color: css("--ah-card-border"),
       })
@@ -172,7 +172,7 @@ export class AndsHommesGame {
       .setVisible(false);
     const faceLabel = this.scene.add
       .text(0, 0, item.label, {
-        fontSize: "11px",
+        fontSize: css("--ah-card-face-size"),
         fontFamily: font,
         color: "#ffffff",
         align: "center",

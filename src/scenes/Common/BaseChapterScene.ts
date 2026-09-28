@@ -76,7 +76,7 @@ export abstract class BaseChapterScene extends BaseScene {
     this.add
       .text(width / 2, height * 0.11, this.chapterTitle, {
         fontSize: css(`${p}-title-size`),
-        fontFamily: css("--font-pixel"),
+        fontFamily: css("--font-title"),
         color: css(`${p}-title-color`),
         stroke: css("--color-bg"),
         strokeThickness: cssNum(`${p}-title-stroke-width`),

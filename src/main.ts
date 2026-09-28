@@ -13,9 +13,11 @@
 import Phaser from "phaser";
 import { gameConfig } from "./game.config";
 import "./styles/global.css";
+// Empêche les textes du jeu d'apparaître pixélisés (voir le fichier pour le détail)
+import "./utils/smoothText";
 
-// On essaie de charger la police "Silkscreen" (définie dans global.css)
-const fontLoad = document.fonts.load("400 16px Silkscreen").then(() => {});
+// On essaie de charger la police "VT323" (Google Fonts, chargée dans index.html)
+const fontLoad = document.fonts.load("400 16px VT323").then(() => {});
 
 // Filet de sécurité : si la police met plus de 2 secondes, on démarre quand même
 // (évite que le jeu reste bloqué si Google Fonts est lent ou hors ligne)

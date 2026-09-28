@@ -24,15 +24,15 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
       width / 2,
       height * 0.07,
       "PROJET UNIVERSITAIRE  -  BUT Informatique  -  Équipe de 3",
-      { fontSize: "14px", fontFamily: font, color: "#ffffff" },
+      { fontSize: css("--ah-context-size"), fontFamily: font, color: "#ffffff" },
     )
     .setOrigin(0.5);
 
   // Titre principal
   scene.add
     .text(width / 2, height * 0.17, "AND'S HOMMES", {
-      fontSize: "40px",
-      fontFamily: font,
+      fontSize: css("--ah-title-size"),
+      fontFamily: css("--font-title"),
       color: css("--ah-score-color"),
       stroke: "#000000",
       strokeThickness: 4,
@@ -47,7 +47,7 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
 
   scene.add
     .text(width * 0.12, height * 0.37, "MISSION", {
-      fontSize: "18px",
+      fontSize: css("--ah-mission-label-size"),
       fontFamily: font,
       color: css("--ah-score-color"),
     })
@@ -64,8 +64,8 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
         "Objectif : tester notre créativité et valider nos compétences front/back-end, sans consignes précises avec pour seules contraintes Symfony et une base SQL.",
       ],
       {
-        fontSize: "16px",
-        fontFamily: "'SpeedDemon', monospace",
+        fontSize: css("--ah-description-size"),
+        fontFamily: css("--ah-description-font"),
         color: css("--ah-text"),
         wordWrap: { width: width * 0.86 },
         align: "left",
@@ -78,7 +78,7 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
 
   scene.add
     .text(width / 2, height * 0.955, "ESC — RETOUR AU MENU", {
-      fontSize: "13px",
+      fontSize: css("--ah-hint-size"),
       fontFamily: font,
       color: "#ffffff",
     })
@@ -134,7 +134,7 @@ export function buildRulesOverlay(
   overlay.push(
     scene.add
       .text(panelCx, panelCy - panelH / 2 + 40, "RÈGLES DU JEU", {
-        fontSize: "20px",
+        fontSize: css("--ah-modal-title-size"),
         fontFamily: font,
         color: css("--ah-score-color"),
       })
@@ -155,7 +155,7 @@ export function buildRulesOverlay(
           `Tu as ${TIMER_SECONDS} secondes. Bonne chance !`,
         ],
         {
-          fontSize: "14px",
+          fontSize: css("--ah-modal-text-size"),
           fontFamily: font,
           color: css("--ah-text"),
           align: "center",
@@ -174,7 +174,7 @@ export function buildRulesOverlay(
   overlay.push(
     scene.add
       .text(panelCx, exLabelY, "EXEMPLE DE PAIRE :", {
-        fontSize: "11px",
+        fontSize: css("--ah-example-label-size"),
         fontFamily: font,
         color: css("--ah-text-dim"),
       })
@@ -199,7 +199,7 @@ export function buildRulesOverlay(
   overlay.push(
     scene.add
       .text(panelCx - 92, exChipsY, exPair.termA, {
-        fontSize: "12px",
+        fontSize: css("--ah-example-chip-size"),
         fontFamily: font,
         color: "#ffffff",
       })
@@ -210,7 +210,7 @@ export function buildRulesOverlay(
   overlay.push(
     scene.add
       .text(panelCx, exChipsY, "↔", {
-        fontSize: "18px",
+        fontSize: css("--ah-example-arrow-size"),
         fontFamily: font,
         color: "#ffffff",
       })
@@ -231,7 +231,7 @@ export function buildRulesOverlay(
   overlay.push(
     scene.add
       .text(panelCx + 92, exChipsY, exPair.termB.replace("\n", " "), {
-        fontSize: "12px",
+        fontSize: css("--ah-example-chip-size"),
         fontFamily: font,
         color: "#ffffff",
       })
@@ -245,7 +245,7 @@ export function buildRulesOverlay(
     .setStrokeStyle(2, cssHex("--ah-score-color"));
   const btnTxt = scene.add
     .text(0, 0, "JOUER ►", {
-      fontSize: "14px",
+      fontSize: css("--ah-modal-button-size"),
       fontFamily: font,
       color: "#000000",
     })
@@ -272,7 +272,7 @@ export function buildRulesOverlay(
   overlay.push(
     scene.add
       .text(panelCx, panelCy + panelH / 2 + 18, "ESC pour annuler", {
-        fontSize: "11px",
+        fontSize: css("--ah-modal-cancel-size"),
         fontFamily: font,
         color: "#ffffff",
       })

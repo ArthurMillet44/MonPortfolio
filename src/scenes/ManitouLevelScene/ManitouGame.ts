@@ -37,7 +37,7 @@ export class ManitouGame {
     const font = css("--font-pixel");
 
     this.timerText = this.scene.add.text(14, 14, `TEMPS : ${TIMER_SECONDS}`, {
-      fontSize: "15px",
+      fontSize: css("--manitou-hud-size"),
       fontFamily: font,
       color: css("--manitou-timer-ok"),
     });
@@ -50,7 +50,7 @@ export class ManitouGame {
 
     this.scene.add
       .text(ZONE.x, ZONE.y - ZONE.h / 2 - 14, "ZONE DE DÉPÔT", {
-        fontSize: "11px",
+        fontSize: css("--manitou-zone-label-size"),
         fontFamily: font,
         color: css("--manitou-accent"),
       })
@@ -58,7 +58,7 @@ export class ManitouGame {
 
     this.scene.add
       .text(ZONE.x, ZONE.y + ZONE.h / 2 + 13, "attrape & dépose", {
-        fontSize: "9px",
+        fontSize: css("--manitou-zone-hint-size"),
         fontFamily: font,
         color: "#ffffff",
       })
@@ -164,7 +164,7 @@ export class ManitouGame {
       .setStrokeStyle(1, 0xffffff);
     const label = this.scene.add
       .text(0, 0, tech.label, {
-        fontSize: "12px",
+        fontSize: css("--manitou-block-label-size"),
         fontFamily: font,
         color: "#ffffff",
       })

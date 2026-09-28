@@ -14,10 +14,10 @@
   --experiences-card-bg: #3a2e00;
   --experiences-card-accent: #f5c518;
   --experiences-card-text-color: #fff8dc;
-  --experiences-card-text-size: 14px;
+  --experiences-card-text-size: 18px;
 
   /* Astuce ESC en bas de l'écran */
   --experiences-hint-color: #8888aa;
-  --experiences-hint-size: 14px;
+  --experiences-hint-size: 18px;
   --experiences-title-stroke-width: 3;
 }

@@ -63,7 +63,7 @@ export class LevelSelectScene extends BaseScene {
     this.add
       .text(width / 2, height * 0.1, "SÉLECTIONNER UN CHAPITRE", {
         fontSize: css("--select-title-size"),
-        fontFamily: css("--select-font"),
+        fontFamily: css("--font-title"),
         color: css("--select-title-color"),
         stroke: css("--select-title-stroke"),
         strokeThickness: cssNum("--select-title-stroke-width"),

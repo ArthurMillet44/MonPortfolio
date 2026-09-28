@@ -30,8 +30,8 @@ export function buildResult(
   // Titre, score et message de mission
   scene.add
     .text(width / 2, height * 0.1, "RÉSULTAT", {
-      fontSize: "34px",
-      fontFamily: font,
+      fontSize: css("--manitou-result-title-size"),
+      fontFamily: css("--font-title"),
       color: css("--manitou-score-color"),
       stroke: "#000000",
       strokeThickness: 3,
@@ -45,7 +45,7 @@ export function buildResult(
       height * 0.245,
       `${caught.length} / ${TECH.length} TECHNOS DÉPLOYÉES`,
       {
-        fontSize: "18px",
+        fontSize: css("--manitou-result-score-size"),
         fontFamily: font,
         color: css("--manitou-timer-ok"),
       },
@@ -55,7 +55,7 @@ export function buildResult(
   // Message de mission selon le score (0 à 6), voir la fonction rating() ci-dessous
   scene.add
     .text(width / 2, height * 0.355, rating(caught.length), {
-      fontSize: "16px",
+      fontSize: css("--manitou-result-message-size"),
       fontFamily: font,
       color: "#ffffff",
       wordWrap: { width: 620 },
@@ -66,7 +66,7 @@ export function buildResult(
   // Les technos collectées sont mises en valeur, les autres sont grisées
   scene.add
     .text(width / 2, height * 0.475, "TECHNOLOGIES DE LA MISSION :", {
-      fontSize: "16px",
+      fontSize: css("--manitou-result-subtitle-size"),
       fontFamily: font,
       color: "#ffffff",
     })
@@ -128,7 +128,7 @@ function drawTechRow(
     scene.add.rectangle(x, cy, chipW, chipH, tech.color, isCaught ? 0.9 : 0.25);
     scene.add
       .text(x, cy, tech.label, {
-        fontSize: "12px",
+        fontSize: css("--manitou-result-chip-size"),
         fontFamily: font,
         color: "#ffffff",
       })
