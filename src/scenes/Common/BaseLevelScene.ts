@@ -64,7 +64,11 @@ export abstract class BaseLevelScene extends BaseScene {
     this.cameras.main.once("camerafadeoutcomplete", () => {
       this.onTransitionCleanup();
       this.tweens.killAll();
-      this.children.removeAll(true);
+      // On détruit chaque objet plutôt que d'utiliser children.removeAll(true) :
+      // ce dernier ne fait que détacher les objets de la liste d'affichage
+      // (ils deviennent invisibles) sans les détruire, donc sans retirer leur
+      // zone interactive — un bouton "invisible" restait alors cliquable.
+      [...this.children.list].forEach((child) => child.destroy());
 
       this.state = to;
       this.resetEsc();
