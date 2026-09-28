@@ -158,7 +158,7 @@ export function buildRulesOverlay(
           color: css("--pachinko-text"),
           align: "center",
           wordWrap: { width: panelW - 80 },
-          lineSpacing: 10,
+          lineSpacing: 4,
         },
       )
       .setOrigin(0.5, 0),
