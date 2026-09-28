@@ -14,10 +14,10 @@
   --projects-card-bg: #1a3a3a;
   --projects-card-accent: #4ec9b0;
   --projects-card-text-color: #e0f7f4;
-  --projects-card-text-size: 14px;
+  --projects-card-text-size: 18px;
 
   /* Astuce ESC en bas de l'écran */
   --projects-hint-color: #8888aa;
-  --projects-hint-size: 14px;
+  --projects-hint-size: 18px;
   --projects-title-stroke-width: 3;
 }

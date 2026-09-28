@@ -31,7 +31,7 @@ export function buildResult(
   scene.add
     .text(width / 2, height * 0.1, "RÉSULTAT", {
       fontSize: css("--manitou-result-title-size"),
-      fontFamily: font,
+      fontFamily: css("--font-title"),
       color: css("--manitou-score-color"),
       stroke: "#000000",
       strokeThickness: 3,

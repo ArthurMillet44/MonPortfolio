@@ -9,8 +9,10 @@
  */
 
 :root {
-  /* Police utilisée pour tous les textes du menu */
+  /* Police du texte courant du menu */
   --menu-font: var(--font-pixel);
+  /* Police des titres ("ARTHUR MILLET", "PORTFOLIO") */
+  --menu-title-font: var(--font-title);
 
   /* Titre principal "ARTHUR MILLET" */
   --menu-title-color: #f5c518;
@@ -26,13 +28,13 @@
 
   /* Texte clignotant "APPUIE SUR ENTRÉE" */
   --menu-prompt-color: #ffffff;
-  --menu-prompt-size: 16px;
+  --menu-prompt-size: 20px;
 
   /* Rappel des contrôles en bas de l'écran */
   --menu-controls-color: #888888;
-  --menu-controls-size: 16px;
+  --menu-controls-size: 20px;
 
   /* Numéro de version (coin bas gauche) */
   --menu-version-color: #444466;
-  --menu-version-size: 11px;
+  --menu-version-size: 14px;
 }

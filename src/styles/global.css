@@ -1,20 +1,4 @@
 @font-face {
-  font-family: 'Silkscreen';
-  src: url('/fonts/Silkscreen-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: block;
-}
-
-@font-face {
-  font-family: 'Silkscreen';
-  src: url('/fonts/Silkscreen-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: block;
-}
-
-@font-face {
   font-family: 'SpeedDemon';
   src: url('/fonts/SpeedDemon.ttf') format('truetype');
   font-weight: 400;
@@ -39,12 +23,13 @@
   --color-panel-bg: rgba(10, 10, 30, 0.92);
   --color-panel-border: #f5c518;
   --color-tag-bg: #1a1a3a;
-  --font-pixel: 'SpeedDemon', monospace;
+  --font-title: 'SpeedDemon', monospace; /* grands titres stylisés */
+  --font-pixel: 'VT323', monospace; /* texte courant, plus lisible */
   --radius: 0px;
   --gap: 16px;
 
   /* Bouton de niveau partagé (voir scenes/Common/LevelUI.ts) */
-  --level-btn-label-size: 12px;
+  --level-btn-label-size: 16px;
 }
 
 html,

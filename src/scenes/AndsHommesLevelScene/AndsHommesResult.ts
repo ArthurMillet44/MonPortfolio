@@ -34,7 +34,7 @@ export function buildResult(
   scene.add
     .text(width / 2, height * 0.08, "RÉSULTAT", {
       fontSize: css("--ah-result-title-size"),
-      fontFamily: font,
+      fontFamily: css("--font-title"),
       color: css("--ah-score-color"),
       stroke: "#000000",
       strokeThickness: 3,

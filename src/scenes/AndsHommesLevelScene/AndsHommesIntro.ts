@@ -32,7 +32,7 @@ export function buildIntro(scene: Phaser.Scene, onStart: () => void): void {
   scene.add
     .text(width / 2, height * 0.17, "AND'S HOMMES", {
       fontSize: css("--ah-title-size"),
-      fontFamily: font,
+      fontFamily: css("--font-title"),
       color: css("--ah-score-color"),
       stroke: "#000000",
       strokeThickness: 4,

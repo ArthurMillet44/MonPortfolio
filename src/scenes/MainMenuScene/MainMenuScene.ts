@@ -59,7 +59,7 @@ export class MainMenuScene extends BaseScene {
     this.add
       .text(width / 2, height * 0.28, "ARTHUR MILLET", {
         fontSize: css("--menu-title-size"),
-        fontFamily: css("--menu-font"),
+        fontFamily: css("--menu-title-font"),
         color: css("--menu-title-color"),
         stroke: css("--menu-title-stroke"),
         strokeThickness: cssNum("--menu-title-stroke-width"),
@@ -70,7 +70,7 @@ export class MainMenuScene extends BaseScene {
     this.add
       .text(width / 2, height * 0.42, "PORTFOLIO", {
         fontSize: css("--menu-subtitle-size"),
-        fontFamily: css("--menu-font"),
+        fontFamily: css("--menu-title-font"),
         color: css("--menu-subtitle-color"),
         stroke: css("--menu-subtitle-stroke"),
         strokeThickness: cssNum("--menu-subtitle-stroke-width"),

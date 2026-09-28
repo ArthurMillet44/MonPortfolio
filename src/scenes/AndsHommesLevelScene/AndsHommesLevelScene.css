@@ -16,33 +16,33 @@
   --ah-timer-danger: #e74c3c;
 
   /* Tailles de police - écran d'introduction */
-  --ah-context-size: 16px;
+  --ah-context-size: 20px;
   --ah-title-size: 40px;
-  --ah-mission-label-size: 20px;
-  --ah-description-size: 16px;
-  --ah-hint-size: 13px;
+  --ah-mission-label-size: 25px;
+  --ah-description-size: 22px;
+  --ah-hint-size: 17px;
 
-  /* Police du paragraphe de description (volontairement distincte de --font-pixel) */
-  --ah-description-font: 'SpeedDemon', monospace;
+  /* Police du paragraphe de description */
+  --ah-description-font: var(--font-pixel);
 
   /* Tailles de police - modale des règles */
-  --ah-modal-title-size: 20px;
-  --ah-modal-text-size: 14px;
-  --ah-example-label-size: 11px;
-  --ah-example-chip-size: 12px;
-  --ah-example-arrow-size: 18px;
-  --ah-modal-button-size: 14px;
-  --ah-modal-cancel-size: 11px;
+  --ah-modal-title-size: 25px;
+  --ah-modal-text-size: 18px;
+  --ah-example-label-size: 14px;
+  --ah-example-chip-size: 16px;
+  --ah-example-arrow-size: 22px;
+  --ah-modal-button-size: 18px;
+  --ah-modal-cancel-size: 14px;
 
   /* Tailles de police - écran de jeu (HUD et cartes) */
-  --ah-hud-size: 15px;
-  --ah-card-back-size: 18px;
-  --ah-card-face-size: 11px;
+  --ah-hud-size: 19px;
+  --ah-card-back-size: 22px;
+  --ah-card-face-size: 14px;
 
   /* Tailles de police - écran de résultat */
   --ah-result-title-size: 34px;
-  --ah-result-score-size: 18px;
-  --ah-result-message-size: 15px;
-  --ah-result-subtitle-size: 14px;
-  --ah-result-chip-size: 11px;
+  --ah-result-score-size: 22px;
+  --ah-result-message-size: 19px;
+  --ah-result-subtitle-size: 18px;
+  --ah-result-chip-size: 14px;
 }
