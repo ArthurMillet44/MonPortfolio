@@ -14,7 +14,7 @@ export interface ProjectRef {
 }
 
 export const projects: ProjectRef[] = [
-  { id: "pachinko-game", title: "Pachinko Game" },
+  { id: "pachinko-game", title: "Pachinko Game", sceneKey: "PachinkoLevelScene" },
   { id: "ands-hommes", title: "And's Hommes", sceneKey: "AndsHommesLevelScene" },
   { id: "projet-particules", title: "Projet Particules" },
   { id: "pikomino", title: "Pikomino" },

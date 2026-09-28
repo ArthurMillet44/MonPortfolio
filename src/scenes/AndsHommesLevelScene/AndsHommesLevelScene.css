@@ -37,7 +37,7 @@
   /* Tailles de police - écran de jeu (HUD et cartes) */
   --ah-hud-size: 19px;
   --ah-card-back-size: 22px;
-  --ah-card-face-size: 14px;
+  --ah-card-face-size: 20px;
 
   /* Tailles de police - écran de résultat */
   --ah-result-title-size: 34px;

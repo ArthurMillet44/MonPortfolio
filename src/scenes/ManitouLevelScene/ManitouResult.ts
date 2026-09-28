@@ -13,9 +13,10 @@ import { buildButton } from "./ManitouUI";
  *
  * @param scene    - Scène Phaser cible.
  * @param caught   - Liste des technos distinctes collectées pendant la partie.
- * @param onReplay - Appelé par le bouton "Rejouer" (relance directement le jeu).
- * @param onMenu   - Appelé par le bouton "Menu" (retour à la sélection de chapitres).
- * @param onDemo   - Appelé par le bouton "Voir Démo" (ouvre l'overlay vidéo).
+ * @param onReplay         - Appelé par le bouton "Rejouer" (relance directement le jeu).
+ * @param onMenu           - Appelé par le bouton "Menu" (retour à la sélection de chapitres).
+ * @param onDemo           - Appelé par le bouton "Voir Démo" (ouvre l'overlay vidéo).
+ * @param onDownloadReport - Appelé par le bouton "Télécharger" (télécharge le rapport de stage).
  */
 export function buildResult(
   scene: Phaser.Scene,
@@ -23,6 +24,7 @@ export function buildResult(
   onReplay: () => void,
   onMenu: () => void,
   onDemo: () => void,
+  onDownloadReport: () => void,
 ): void {
   const { width, height } = scene.scale;
   const font = css("--font-pixel");
@@ -74,10 +76,26 @@ export function buildResult(
 
   drawTechRow(scene, width / 2, height * 0.557, caught);
 
+  // 4 boutons : REJOUER | VOIR DÉMO | TÉLÉCHARGER | MENU
   const btnY = height * 0.875;
-  buildButton(scene, width / 2 - 220, btnY, "REJOUER", onReplay, cssHex("--manitou-timer-ok"));
-  buildButton(scene, width / 2, btnY, "VOIR DÉMO", onDemo);
-  buildButton(scene, width / 2 + 220, btnY, "MENU", onMenu, cssHex("--manitou-timer-ok"));
+  buildButton(
+    scene,
+    width / 2 - 270,
+    btnY,
+    "REJOUER",
+    onReplay,
+    cssHex("--manitou-timer-ok"),
+  );
+  buildButton(scene, width / 2 - 90, btnY, "VOIR DÉMO", onDemo);
+  buildButton(scene, width / 2 + 90, btnY, "RAPPORT", onDownloadReport);
+  buildButton(
+    scene,
+    width / 2 + 270,
+    btnY,
+    "MENU",
+    onMenu,
+    cssHex("--manitou-timer-ok"),
+  );
 }
 
 /**

@@ -10,7 +10,7 @@ export const PAIRS = [
   {
     id: "doctrine",
     termA: "Doctrine ORM",
-    termB: "Mapping\nobjet-relationnel",
+    termB: "Mapping\nobjet relationnel",
     color: 0xe67e22,
   },
   {

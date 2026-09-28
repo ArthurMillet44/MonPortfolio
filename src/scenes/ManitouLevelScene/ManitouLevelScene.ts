@@ -4,12 +4,16 @@
  */
 
 import { BaseLevelScene, GameState } from "@/scenes/Common/BaseLevelScene";
+import { downloadFile } from "@/utils/downloadFile";
 import { TechId } from "./ManitouConfig";
 import { buildIntro, buildRulesOverlay } from "./ManitouIntro";
 import { ManitouGame } from "./ManitouGame";
 import { buildResult } from "./ManitouResult";
 import { buildVideoOverlay } from "./ManitouVideoPanel";
+import reportUrl from "@/assets/documents/Rapport_Stage_Manitou_Millet_Arthur.pdf";
 import "./ManitouLevelScene.css";
+
+const REPORT_FILENAME = "Rapport_Stage_Manitou_Millet_Arthur.pdf";
 
 export class ManitouLevelScene extends BaseLevelScene {
   protected readonly menuSceneKey = "LevelSelectScene";
@@ -43,6 +47,11 @@ export class ManitouLevelScene extends BaseLevelScene {
         () => this.transition("game"),
         () => this.launchLevel("LevelSelectScene"),
         () => buildVideoOverlay(() => this.resetEsc()),
+        () => {
+          if (window.confirm("Télécharger le rapport de stage (PDF) ?")) {
+            downloadFile(reportUrl, REPORT_FILENAME);
+          }
+        },
       );
     }
   }
