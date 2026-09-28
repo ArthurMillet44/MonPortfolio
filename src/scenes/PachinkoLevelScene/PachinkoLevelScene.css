@@ -1,0 +1,38 @@
+/**
+ * Variables CSS pour le niveau Pachinko
+ */
+
+:root {
+  --pachinko-accent: #f5c518;
+  --pachinko-text: #ecf0f1;
+  --pachinko-text-dim: #7f8c8d;
+  --pachinko-panel-bg: #1a1a2e;
+  --pachinko-divider: #2c3e50;
+  --pachinko-score-color: #f5c518;
+  --pachinko-peg-color: #dfe6e9;
+  --pachinko-ball-color: #ff6b6b;
+  --pachinko-win-color: #2ecc71;
+  --pachinko-fail-color: #e74c3c;
+
+  /* Tailles de police - écran d'introduction */
+  --pachinko-context-size: 20px;
+  --pachinko-title-size: 40px;
+  --pachinko-mission-label-size: 25px;
+  --pachinko-description-size: 22px;
+  --pachinko-hint-size: 17px;
+
+  /* Tailles de police - modale des règles */
+  --pachinko-modal-title-size: 25px;
+  --pachinko-modal-text-size: 18px;
+  --pachinko-modal-button-size: 18px;
+  --pachinko-modal-cancel-size: 14px;
+
+  /* Tailles de police - écran de jeu (HUD et cases) */
+  --pachinko-hud-size: 19px;
+  --pachinko-bucket-label-size: 13px;
+
+  /* Tailles de police - écran de résultat */
+  --pachinko-result-title-size: 34px;
+  --pachinko-result-message-size: 25px;
+  --pachinko-result-subtitle-size: 22px;
+}
